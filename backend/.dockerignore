@@ -1,0 +1,10 @@
+pb_data/
+*.db
+*.db-shm
+*.db-wal
+.git/
+.gitignore
+README.md
+*.md
+.env
+.env.*
