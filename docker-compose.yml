@@ -1,0 +1,11 @@
+services:
+  pocketbase:
+    image: ghcr.io/nawfay/bookclub-backend:latest
+    # Or build locally:
+    # build: ./backend
+    ports:
+      - "8090:8090"
+    volumes:
+      # Saves data to ./pb_data folder in your project directory
+      - /Users/nawaf/Documents/GitHub/Sheikah-Slate/test:/app/pb_data
+    restart: unless-stopped
