@@ -32,6 +32,7 @@ func RegisterInviteRoute(app core.App) {
 				"code": data.Code,
 			})
 
+
 			if err != nil {
 				return e.BadRequestError("Invalid invite code", err)
 			}
@@ -47,6 +48,7 @@ func RegisterInviteRoute(app core.App) {
 			newUser.Set("name", data.Name)
 			newUser.Set("password", data.Password)
 			newUser.Set("passwordConfirm", data.PasswordConfirm)
+			newUser.Set("role", invite.Get("role").(string))
 
 			// 5. Transaction: Create User + Mark Invite Used
 			err = app.RunInTransaction(func(txApp core.App) error {

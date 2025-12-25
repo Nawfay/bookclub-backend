@@ -2,9 +2,18 @@ module sheikahslate
 
 go 1.24.4
 
-require github.com/pocketbase/pocketbase v0.34.2
+require (
+	github.com/ledongthuc/pdf v0.0.0-20250511090121-5959a4027728
+	github.com/pocketbase/pocketbase v0.34.2
+)
 
 require (
+	github.com/andybalholm/cascadia v1.3.3 // indirect
+	github.com/ledongthuc/pdf v0.0.0-20250511090121-5959a4027728 // indirect
+)
+
+require (
+	github.com/PuerkitoBio/goquery v1.11.0
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 // indirect
 	github.com/disintegration/imaging v1.6.2 // indirect
 	github.com/domodwyer/mailyak/v3 v3.6.2 // indirect
