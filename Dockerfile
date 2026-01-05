@@ -5,12 +5,12 @@ WORKDIR /app
 # Install dependencies
 RUN apk add --no-cache gcc musl-dev
 
-# Copy go mod files
-COPY go.mod go.sum ./
+# Copy go mod files from backend directory
+COPY backend/go.mod backend/go.sum ./
 RUN go mod download
 
-# Copy source code
-COPY . .
+# Copy source code from backend directory
+COPY backend/ .
 
 # Build the application
 RUN CGO_ENABLED=1 GOOS=linux go build -o pocketbase .

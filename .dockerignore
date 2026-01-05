@@ -1,0 +1,50 @@
+# Git
+.git
+.gitignore
+.github
+
+# Documentation
+README.md
+*.md
+
+# Development files
+.env
+.env.local
+.env.development
+.env.test
+
+# IDE files
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.log
+node_modules
+npm-debug.log*
+
+# Test files
+test.js
+package.json
+package-lock.json
+
+# Docker files
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# PocketBase data (should not be in image)
+pb_data/
+*.db
+*.db-shm
+*.db-wal
+
+# Frontend (if any)
+frontend/
+dist/
+build/
