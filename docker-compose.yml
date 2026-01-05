@@ -7,5 +7,17 @@ services:
       - "8090:8090"
     volumes:
       # Saves data to ./pb_data folder in your project directory
-      - /Users/nawaf/Documents/GitHub/Sheikah-Slate/test:/app/pb_data
+      - ./pb_data:/app/pb_data
     restart: unless-stopped
+    # Run as non-root user
+    user: "1000:1000"
+    # Health check
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8090/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    # Environment variables
+    environment:
+      - POCKETBASE_DATA_DIR=/app/pb_data

@@ -18,16 +18,24 @@ RUN CGO_ENABLED=1 GOOS=linux go build -o pocketbase .
 # Final stage
 FROM alpine:latest
 
+# Create a non-root user
+RUN addgroup -g 1001 -S pocketbase && \
+    adduser -u 1001 -S pocketbase -G pocketbase
+
 WORKDIR /app
 
-# Install ca-certificates for HTTPS
-RUN apk add --no-cache ca-certificates
+# Install ca-certificates for HTTPS and wget for health checks
+RUN apk add --no-cache ca-certificates wget
 
 # Copy binary from builder
 COPY --from=builder /app/pocketbase .
 
-# Create data directory
-RUN mkdir -p /app/pb_data
+# Create data directory and set ownership
+RUN mkdir -p /app/pb_data && \
+    chown -R pocketbase:pocketbase /app
+
+# Switch to non-root user
+USER pocketbase
 
 # Expose port
 EXPOSE 8090
