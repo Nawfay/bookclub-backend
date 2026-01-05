@@ -19,8 +19,8 @@ RUN CGO_ENABLED=1 GOOS=linux go build -o pocketbase .
 FROM alpine:latest
 
 # Create a non-root user
-RUN addgroup -g 1001 -S pocketbase && \
-    adduser -u 1001 -S pocketbase -G pocketbase
+RUN addgroup -g 1000 -S pocketbase && \
+    adduser -u 1000 -S pocketbase -G pocketbase
 
 WORKDIR /app
 
